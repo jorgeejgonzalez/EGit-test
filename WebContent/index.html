@@ -4,12 +4,29 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.j"></script>
+<script type="text/javascript">
+ if(navigator.geolocation){
+	 console.log("Geolocation is supported")
+ }else{
+	 console.log("Geolocation is not supported")
+ }
+ window.onload=function(){
+	var posini;
+	navigator.geolocation.getCurrentPosition(function(position)){
+		posini=position;
+		document.getElementById('latini').innerHTML = posini.coors.latitude;
+		document.getElementById('lonini').innerHTML = posini.coors.longitude;
+	}
+ }
+</script>
 <title>Prueba</title>
 </head>
 <body>
- <form action="">
-  <label>Latitud</label><input id="latitud" type="text" /><br/>
-  <label>Longitud</label><input id="longitud" type="text"/><br/>
- </form>
+ <div id="localizacion">
+  <p>
+   Localizacion(lat,lon)<br/>
+   <span id="latini">???</span>,<span id="lonini">???</span>
+  </p> 
+ </div>
 </body>
 </html>
